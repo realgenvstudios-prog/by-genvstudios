@@ -107,8 +107,7 @@ const ModelImage = styled.img`
   object-fit: cover;
   border-radius: 8px;
   transition: transform 0.3s ease;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
+  background: #fff;
   
   &[data-loading="true"] {
     animation: shimmer 1.5s infinite;
