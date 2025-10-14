@@ -86,28 +86,31 @@ const ModelCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2.1rem 1.2rem 1rem;
-  min-height: 420px;
+  padding: 2.1rem 1.2rem 1.2rem;
+  min-height: 460px;
   position: relative;
-  justify-content: center;
-  
+  justify-content: flex-start;
+  box-sizing: border-box;
+  overflow: hidden;
   @media (max-width: 768px) {
-    height: 360px;
-    min-height: 360px;
-    max-height: 360px;
-    padding: 1.5rem 1rem 1rem;
-    border-radius: 28px;
-    justify-content: space-between;
+    min-height: 400px;
+    height: 400px;
+    max-height: 400px;
+    padding: 1.2rem 0.9rem 1.2rem;
+    border-radius: 24px;
+    justify-content: flex-start;
+    box-sizing: border-box;
   }
 `;
 
 const ModelImage = styled.img`
   width: 100%;
-  height: 400px;
-  object-fit: cover;
+  height: 380px;
+  object-fit: contain;
   border-radius: 8px;
   transition: transform 0.3s ease;
   background: #fff;
+  box-sizing: border-box;
   
   &[data-loading="true"] {
     animation: shimmer 1.5s infinite;
@@ -119,7 +122,8 @@ const ModelImage = styled.img`
   }
   
   @media (max-width: 768px) {
-    height: 350px;
+    height: 210px;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -131,14 +135,16 @@ const ModelInfoRow = styled.div`
   font-family: 'Satoshi', sans-serif;
   font-size: 1rem;
   color: #111;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.3rem;
   
   @media (max-width: 768px) {
     gap: 0.6rem;
-    font-size: 0.9rem;
-    margin: 0;
+    font-size: 0.95rem;
+    margin-bottom: 0.7rem;
     flex-shrink: 0;
-    padding: 0.5rem 0;
+    padding: 0.3rem 0 0.1rem 0;
+    width: 100%;
+    justify-content: center;
   }
 `;
 
@@ -150,9 +156,17 @@ const Divider = styled.span`
 
 const ModelTagline = styled.span`
   font-family: 'Satoshi', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   color: #222;
   opacity: 0.9;
+  margin-bottom: 0.7rem;
+  text-align: center;
+  width: 100%;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 0 0.2rem;
+  }
 `;
 
 const ViewIconWrapper = styled.div`
@@ -199,6 +213,12 @@ function ModelsPage() {
   
   // Use backend data or fallback to empty array while loading
   const models = modelsData || [];
+  // Debug: log model data to verify fields
+  React.useEffect(() => {
+    if (models && models.length > 0) {
+      console.log('Model data:', models);
+    }
+  }, [models]);
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 3);
@@ -360,13 +380,14 @@ function ModelsPage() {
           {filteredModels.slice(0, visibleCount).map(model => (
             <ModelCard key={model._id}>
               <ModelImage src={model.mainImage || '/images/placeholder-model.png'} alt={model.name} />
-              <ModelInfoRow>
-                <span>{model.name}</span>
-                <Divider />
-                <span>{model.age}</span>
-                <Divider />
+              <div style={{ width: '100%', marginTop: '1.2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <ModelInfoRow>
+                  <span>{model.name}</span>
+                  <Divider />
+                  <span>{model.age}</span>
+                </ModelInfoRow>
                 <ModelTagline>{model.tagline}</ModelTagline>
-              </ModelInfoRow>
+              </div>
               <ViewIconWrapper onClick={() => handleViewModel(model._id)} title="View details">
                 <ViewIcon>
                   <svg viewBox="0 0 24 24">
