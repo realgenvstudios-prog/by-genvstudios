@@ -385,7 +385,7 @@ export default function ModelDetailPage() {
       </InfoSection>
       <ButtonRow>
         <ActionButton onClick={() => navigate('/models')}>Explore More Models</ActionButton>
-        <ActionButton>Book for Campaign</ActionButton>
+        <ActionButton onClick={() => navigate('/contact')}>Book for Campaign</ActionButton>
       </ButtonRow>
     </DetailWrapper>
   );
