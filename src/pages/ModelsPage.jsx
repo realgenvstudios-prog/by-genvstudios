@@ -7,21 +7,28 @@ import { api } from '../../convex/_generated/api';
 
 const HeroSection = styled.section`
   width: 100vw;
-  min-height: 45vh;
   background: #EAEAEA;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-    padding-top: 7rem;
+  padding-top: 2.5rem;
   padding-bottom: 0.2rem;
+  margin-bottom: 4.2rem;
   margin: 0;
-  
+  min-height: unset;
+  @media (min-width: 1200px) {
+    padding-top: 3.5rem;
+    padding-bottom: 0.2rem;
+  }
+  @media (max-width: 1024px) {
+    padding-top: 2.2rem;
+    padding-bottom: 0.2rem;
+  }
   @media (max-width: 768px) {
     width: 100%;
-    padding: 4rem 1.5rem 1.5rem 1.5rem;
-    min-height: 35vh;
+    padding: 1.8rem 1.2rem 1.2rem 1.2rem;
     box-sizing: border-box;
   }
 `;
@@ -29,10 +36,23 @@ const HeroSection = styled.section`
 const MainHeading = styled(motion.h1)`
   font-family: 'Canela Text', serif;
   font-size: clamp(2.2rem, 4vw, 3rem);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.1rem;
   line-height: 1.1;
   font-weight: normal;
   max-width: 700px;
+  margin-top: 0.5rem;
+  @media (min-width: 1200px) {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 0.7rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 0.2rem;
+    margin-bottom: 0.7rem;
+  }
 `;
 
 const SubtextContainer = styled.div`
@@ -40,7 +60,19 @@ const SubtextContainer = styled.div`
   flex-direction: column;
   gap: 0.3rem;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0 auto 0.2rem auto;
+  @media (min-width: 1200px) {
+    margin-top: 0.2rem;
+    margin-bottom: 0.7rem;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 0.1rem;
+    margin-bottom: 0.5rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 0.1rem;
+    margin-bottom: 0.3rem;
+  }
 `;
 
 const Subtext = styled(motion.p)`
@@ -55,7 +87,9 @@ const ModelsGridSection = styled.section`
   width: 100vw;
   background: #EAEAEA;
   padding: 0.2rem 0 4rem;
-  
+  @media (min-width: 769px) {
+    padding-top: 0.2rem;
+  }
   @media (max-width: 768px) {
     width: 100%;
     padding: 0 1.5rem 4rem 1.5rem;
