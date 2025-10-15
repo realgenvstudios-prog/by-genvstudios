@@ -99,17 +99,20 @@ const ModelsGridSection = styled.section`
 
 const ModelsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2.1rem;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  gap: 2.1rem;
   justify-items: center;
-  
+  grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.7rem;
+  }
   @media (max-width: 768px) {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin: 1.5rem auto 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin: 1.2rem auto 0 auto;
   }
 `;
 
@@ -126,14 +129,22 @@ const ModelCard = styled.div`
   justify-content: flex-start;
   box-sizing: border-box;
   overflow: hidden;
-  @media (max-width: 768px) {
+  width: 100%;
+  @media (max-width: 1024px) {
     min-height: 400px;
     height: 400px;
     max-height: 400px;
     padding: 1.2rem 0.9rem 1.2rem;
     border-radius: 24px;
-    justify-content: flex-start;
-    box-sizing: border-box;
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    min-height: 340px;
+    height: 340px;
+    max-height: 340px;
+    padding: 1rem 0.7rem 1rem;
+    border-radius: 22px;
+    width: 100%;
   }
 `;
 
